@@ -18,6 +18,7 @@ namespace PhotoReviewV3.Controllers
         // GET: Photo
         public ActionResult Index(string searchTerm = null, int ddlProjects = -1, int ddlStores = -1, int ddlStatus = -1, int page = 1)
         {
+
             var model =
                 db.Photos
                 .Where(r => (searchTerm == null || r.Name.Contains(searchTerm)) && (ddlProjects <= 0 || r.ProjectId == ddlProjects)
