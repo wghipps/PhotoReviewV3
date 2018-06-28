@@ -1,0 +1,6 @@
+﻿@model IEnumerable<PhotoReviewV3.Models.Status>
+
+@*<div>*@
+    Status: @Html.DropDownList("ddlStatus", new SelectList(Model, "Id", "Name"), "")
+                    
+@*</div>*@

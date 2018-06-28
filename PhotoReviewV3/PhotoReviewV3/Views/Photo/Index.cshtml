@@ -1,0 +1,47 @@
+﻿@*@model IEnumerable<PhotoReviewV3.Models.Photo>*@
+@model IPagedList<PhotoReviewV3.Models.AdvPhotoReviewGridVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <h1>RMS Advanced Search</h1>
+    <p class="lead">Use this to search for photos to review.</p>
+</div>
+
+<h2>Index</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p*@>
+<fieldset>
+    <legend>Search</legend>
+    @*@using (Ajax.BeginForm(
+                new AjaxOptions
+                {
+                    HttpMethod = "get",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "searchResults"
+                }
+                ))
+        {
+            Html.RenderAction("GetSearchList", "Project");
+            Html.RenderAction("GetSearchList", "Store");
+            <input type="search" name="searchTerm" />
+            <input type="submit" value="Search" />
+        }*@
+    <form method="get" action="@Url.Action("Index")" data-pr-ajax="true" data-pr-target="#searchResults">
+        @*@{Html.RenderAction("GetSearchList", "Project"); }
+        @{Html.RenderAction("GetSearchList", "Store"); }
+        @{Html.RenderAction("GetSearchList", "Status"); }*@
+        @Html.Partial("_SearchCriteria")
+        <input type="search" name="searchTerm" />
+        <input type="submit" value="Search" />
+    </form>
+    <br />
+    <br />
+
+</fieldset>
+@*<div id="searchResults">*@
+@Html.Partial("_SearchResults", Model)
+@*</div>*@
